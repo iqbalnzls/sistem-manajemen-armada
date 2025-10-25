@@ -1,0 +1,49 @@
+{
+  "app" : {
+    "name" : "sistem-manajemen-armada",
+    "port" : 3000
+  },
+  "database" : {
+    "host" : "localhost",
+    "username" : "tj2025",
+    "password" : "tj2025",
+    "port" : 5432,
+    "name" : "simada",
+    "schema": "simada",
+    "maxIdleConnections": 5,
+    "maxOpenConnections": 30,
+    "debugMode": true
+  },
+  "rabbitmq": {
+    "host": "localhost",
+    "port": 5672,
+    "user": "guest",
+    "pass": "guest",
+    "exchange": {
+      "name": "fleet.events",
+      "type": "topic",
+      "durable": true,
+      "autoDelete": false
+    },
+    "queue": {
+      "name": "geofence_alerts",
+      "durable": true,
+      "autoDelete": false,
+      "exclusive": false,
+      "routingKey": "geofence.*"
+    }
+  },
+  "mqtt": {
+    "broker": "localhost",
+    "port": 1883,
+    "clientId": "fleet-management-server",
+    "username": "",
+    "password": "",
+    "topicPattern": "/fleet/vehicle/+/location",
+    "qos": 1,
+    "cleanSession": true,
+    "autoReconnect": true,
+    "connectRetryDelay": 5,
+    "maxReconnectAttempts": 10
+  }
+}
