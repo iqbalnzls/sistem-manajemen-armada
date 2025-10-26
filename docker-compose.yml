@@ -54,7 +54,7 @@ services:
         condition: service_healthy
       mosquitto:
         condition: service_healthy
-    command: sh -c "sleep 10 && /app/sistem-manajemen-armada"
+    command: sh -c "sleep 15 && /app/sistem-manajemen-armada"
     restart: unless-stopped
 
 volumes:
