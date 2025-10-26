@@ -8,10 +8,10 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/internal/app/usecase/vehiclelocations"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/validator"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/dto"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/logger"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/validator"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/usecase/vehiclelocations"
 )
 
 type vehicleLocHandler struct {

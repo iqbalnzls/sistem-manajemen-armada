@@ -5,7 +5,7 @@ import (
 
 	amqp "github.com/rabbitmq/amqp091-go"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/config"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
 )
 
 type RabbitMQ struct {

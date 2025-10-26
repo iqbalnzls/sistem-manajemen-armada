@@ -5,9 +5,9 @@ import (
 
 	"go.uber.org/zap"
 
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/database"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/domain"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/database"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/logger"
 )
 
 type repo struct {

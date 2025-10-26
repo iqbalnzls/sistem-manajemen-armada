@@ -4,7 +4,7 @@
     "port" : 3000
   },
   "database" : {
-    "host" : "localhost",
+    "host" : "postgres",
     "username" : "tj2025",
     "password" : "tj2025",
     "port" : 5432,
@@ -15,7 +15,7 @@
     "debugMode": true
   },
   "rabbitmq": {
-    "host": "localhost",
+    "host": "rabbitmq",
     "port": 5672,
     "user": "guest",
     "pass": "guest",
@@ -34,7 +34,7 @@
     }
   },
   "mqtt": {
-    "broker": "localhost",
+    "broker": "mosquitto",
     "port": 1883,
     "clientId": "fleet-management-server",
     "username": "",

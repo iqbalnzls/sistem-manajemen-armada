@@ -5,8 +5,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"go.uber.org/zap"
 
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/container"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/logger"
 )
 
 func StartHttpServer(container *container.Container) {

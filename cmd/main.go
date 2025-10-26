@@ -16,7 +16,7 @@ func main() {
 	c := container.SetupContainer()
 	defer c.Cleanup()
 
-	// Start all servers (HTTP + MQTT)
+	// Start all servers (HTTP + MQTT _+ RabbitMQ)
 	delivery.StartServer(c)
 
 	// Start RabbitMQ worker that consumes geofence_alerts queue

@@ -7,7 +7,7 @@ import (
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/config"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
 )
 
 type MQTT struct {

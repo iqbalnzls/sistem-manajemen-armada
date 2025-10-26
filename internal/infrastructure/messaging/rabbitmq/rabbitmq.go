@@ -7,8 +7,8 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 	"go.uber.org/zap"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/config"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/logger"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
 )
 
 type Publisher interface {

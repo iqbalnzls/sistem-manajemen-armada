@@ -4,11 +4,11 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/internal/constants"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/constants"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/util"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/dto"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/infrastructure/messaging/rabbitmq"
 	vehicleLocationsRepo "github.com/iqbalnzls/sistem-manajemen-armada/internal/infrastructure/postgres/vehicle_locations"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/util"
 )
 
 type service struct {

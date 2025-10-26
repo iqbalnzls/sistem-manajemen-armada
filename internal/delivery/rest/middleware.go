@@ -8,8 +8,8 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/config"
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/logger"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
 )
 
 func SetupMiddleware(log *zap.Logger, cfg *config.AppConfig) fiber.Handler {

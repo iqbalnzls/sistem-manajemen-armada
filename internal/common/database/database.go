@@ -6,7 +6,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/iqbalnzls/sistem-manajemen-armada/pkg/config"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
 )
 
 type Database struct {
