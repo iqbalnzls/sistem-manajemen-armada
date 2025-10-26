@@ -5,19 +5,19 @@ import (
 
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/config"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/database"
-	messaging2 "github.com/iqbalnzls/sistem-manajemen-armada/internal/common/messaging"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/messaging"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/validator"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/infrastructure/messaging/rabbitmq"
 	vehicleLocationsRepo "github.com/iqbalnzls/sistem-manajemen-armada/internal/infrastructure/postgres/vehicle_locations"
-	vehiclelocations2 "github.com/iqbalnzls/sistem-manajemen-armada/internal/usecase/vehiclelocations"
+	vehiclelocationsUc "github.com/iqbalnzls/sistem-manajemen-armada/internal/usecase/vehiclelocations"
 )
 
 type Container struct {
 	Config        *config.Config
-	VehicleLocSvc vehiclelocations2.Service
+	VehicleLocSvc vehiclelocationsUc.Service
 	Validator     *validator.Validator
-	RabbitMQ      *messaging2.RabbitMQ
-	Mqtt          *messaging2.MQTT
+	RabbitMQ      *messaging.RabbitMQ
+	Mqtt          *messaging.MQTT
 }
 
 func SetupContainer() *Container {
@@ -28,10 +28,10 @@ func SetupContainer() *Container {
 	v := validator.NewValidator()
 
 	//init rabbitmq
-	rabbitMq := messaging2.NewRabbitMQConnection(&cfg.RabbitMQ)
+	rabbitMq := messaging.NewRabbitMQConnection(&cfg.RabbitMQ)
 
 	//init mqtt
-	mqtt := messaging2.NewMQTTConnection(&cfg.MQTT)
+	mqtt := messaging.NewMQTTConnection(&cfg.MQTT)
 
 	//init database
 	db := database.NewDatabase(&cfg.Database)
@@ -41,7 +41,7 @@ func SetupContainer() *Container {
 	rabbitmqPublisher := rabbitmq.NewRabbitMQ(rabbitMq.Channel, &cfg.RabbitMQ)
 
 	//init service
-	vehicleLocSvc := vehiclelocations2.NewVehicleLocationsService(vehicleLocRepo, rabbitmqPublisher)
+	vehicleLocSvc := vehiclelocationsUc.NewVehicleLocationsService(vehicleLocRepo, rabbitmqPublisher)
 
 	return &Container{
 		Config:        cfg,

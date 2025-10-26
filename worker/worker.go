@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"time"
 
-	messaging2 "github.com/iqbalnzls/sistem-manajemen-armada/internal/common/messaging"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/messaging"
 )
 
 const (
@@ -19,7 +19,7 @@ const (
 )
 
 // RabbitMQWorker represent worker handles message consumption from the geofence_alerts queue.
-func RabbitMQWorker(rmq *messaging2.RabbitMQ, queueName string) {
+func RabbitMQWorker(rmq *messaging.RabbitMQ, queueName string) {
 	msgs, err := rmq.Channel.Consume(
 		queueName,
 		"",
@@ -50,7 +50,7 @@ type VehicleLocationPayload struct {
 
 // SchedulerMQTT publishes vehicle location events to MQTT every 2 seconds
 // with randomly generated coordinates within ±50 meters of Jakarta
-func SchedulerMQTT(mqtt *messaging2.MQTT) {
+func SchedulerMQTT(mqtt *messaging.MQTT) {
 	vehicleId := "B1234VV"
 	topic := fmt.Sprintf("/fleet/vehicle/%s/location", vehicleId)
 
