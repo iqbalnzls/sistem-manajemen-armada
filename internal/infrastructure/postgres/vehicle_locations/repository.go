@@ -9,4 +9,5 @@ import (
 type Repository interface {
 	Insert(ctx context.Context, vehicleLoc *domain.VehicleLocations) error
 	FindBy(ctx context.Context, query string, args map[string]interface{}) (*domain.VehicleLocations, error)
+	FindAllBy(ctx context.Context, query string, args map[string]interface{}) ([]*domain.VehicleLocations, error)
 }

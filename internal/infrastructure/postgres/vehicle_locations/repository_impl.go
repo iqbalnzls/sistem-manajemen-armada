@@ -2,6 +2,7 @@ package vehicle_locations
 
 import (
 	"context"
+	"errors"
 
 	"go.uber.org/zap"
 
@@ -41,4 +42,21 @@ func (r *repo) FindBy(ctx context.Context, query string, args map[string]interfa
 	}
 
 	return &result, err
+}
+
+func (r *repo) FindAllBy(ctx context.Context, query string, args map[string]interface{}) ([]*domain.VehicleLocations, error) {
+	var result []*domain.VehicleLocations
+
+	err := r.db.Where(query, args).Order("timestamp DESC").Find(&result).Error
+	if err != nil {
+		logger.FromContext(ctx).Error("failed to find vehicle location", zap.Error(err))
+		return nil, err
+	}
+
+	if len(result) == 0 {
+		err = errors.New("no vehicle location found")
+		logger.FromContext(ctx).Error("failed to find vehicle location", zap.Error(err))
+		return nil, err
+	}
+	return result, nil
 }

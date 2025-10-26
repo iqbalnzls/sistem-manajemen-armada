@@ -60,19 +60,19 @@ func (s *service) FindVehicleById(ctx context.Context, req *dto.FindVehicleByIdR
 
 }
 
-func (s *service) FindVehicleByIdAndTime(ctx context.Context, req *dto.FindVehicleByIdAndTimeRequest) (resp dto.FindVehicleByIdAndTimeResponse, err error) {
+func (s *service) FindVehicleByIdAndTime(ctx context.Context, req *dto.FindVehicleByIdAndTimeRequest) (resp []dto.FindVehicleByIdAndTimeResponse, err error) {
 	query := "vehicle_id = @vehicle_id AND timestamp >= @start AND timestamp <= @end"
 	args := map[string]interface{}{
 		"vehicle_id": req.VehicleId,
 		"start":      req.Start,
 		"end":        req.End,
 	}
-	domain, err := s.vehicleLocRepo.FindBy(ctx, query, args)
+	domain, err := s.vehicleLocRepo.FindAllBy(ctx, query, args)
 	if err != nil {
 		return
 	}
 
-	resp = toFindVehicleByIdAndTimeResponse(domain)
+	resp = toFindVehiclesByIdAndTimeResponse(domain)
 
 	return
 }

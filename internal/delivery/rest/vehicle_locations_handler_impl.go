@@ -55,7 +55,7 @@ func (h *vehicleLocHandler) FindVehicleById(c *fiber.Ctx) (err error) {
 		zap.Int64("rt", time.Now().Sub(startTime).Milliseconds()),
 	)
 
-	return c.Status(fiber.StatusOK).JSON(resp)
+	return c.Status(fiber.StatusOK).JSON(toBaseResponse(resp))
 }
 
 func (h *vehicleLocHandler) FindVehicleByIdAndTime(c *fiber.Ctx) (err error) {
@@ -87,5 +87,5 @@ func (h *vehicleLocHandler) FindVehicleByIdAndTime(c *fiber.Ctx) (err error) {
 		zap.Int64("rt", time.Now().Sub(startTime).Milliseconds()),
 	)
 
-	return c.Status(fiber.StatusOK).JSON(resp)
+	return c.Status(fiber.StatusOK).JSON(toBaseResponse(resp))
 }

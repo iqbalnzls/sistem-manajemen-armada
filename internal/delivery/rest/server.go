@@ -7,6 +7,7 @@ import (
 
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/common/logger"
 	"github.com/iqbalnzls/sistem-manajemen-armada/internal/container"
+	"github.com/iqbalnzls/sistem-manajemen-armada/internal/dto"
 )
 
 func StartHttpServer(container *container.Container) {
@@ -37,10 +38,11 @@ func errorHandler() fiber.ErrorHandler {
 
 		log.Info("Outgoing request")
 
-		return ctx.Status(fiber.StatusOK).JSON(
-			fiber.Map{
-				"result":  false,
-				"message": err.Error(),
-			})
+		resp := dto.BaseResponse{
+			Success: false,
+			Message: err.Error(),
+		}
+
+		return ctx.Status(fiber.StatusOK).JSON(resp)
 	}
 }

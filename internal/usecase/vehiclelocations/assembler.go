@@ -48,3 +48,13 @@ func toFindVehicleByIdAndTimeResponse(domain *domain.VehicleLocations) dto.FindV
 		},
 	}
 }
+
+func toFindVehiclesByIdAndTimeResponse(domain []*domain.VehicleLocations) []dto.FindVehicleByIdAndTimeResponse {
+	result := make([]dto.FindVehicleByIdAndTimeResponse, 0)
+
+	for _, v := range domain {
+		result = append(result, toFindVehicleByIdAndTimeResponse(v))
+	}
+
+	return result
+}
